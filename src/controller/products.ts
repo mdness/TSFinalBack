@@ -13,4 +13,5 @@ export const createProduct = async (name: string, stock: number, price: number) 
     })
 
     return newProduct;
+
 }
