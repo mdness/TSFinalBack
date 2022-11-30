@@ -16,12 +16,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mdness/Backend-Proj.git"
+    "url": "git+https://github.com/mdness/Project-Backend.git"
   },
   "bugs": {
-    "url": "https://github.com/mdness/Backend-Proj/issues"
+    "url": "https://github.com/mdness/Project-Backend/issues"
   },
-  "homepage": "https://github.com/mdness/Backend-Proj#readme",
+  "homepage": "https://github.com/mdness/Project-Backend#readme",
   "description": "",
   "devDependencies": {
     "@types/express": "^4.17.14",
