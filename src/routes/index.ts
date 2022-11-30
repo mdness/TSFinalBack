@@ -1,10 +1,10 @@
-import { Router, Request, Response } from 'express';
-import cartRouter from './cart';
-import productRouter from './products';
+import { Router, Request, Response } from "express";
+import CartsRouter from './cart';
+import ProductsRouter from './products';
 
 const router = Router();
 
-router.use("./cart", cartRouter);
-router.use("./products", productRouter)
+router.use('/carts', CartsRouter);
+router.use('/products', ProductsRouter);
 
-export default router
+export default router;

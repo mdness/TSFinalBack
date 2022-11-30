@@ -1,29 +1,66 @@
-import { Router, Request, Response } from 'express';
+// import { Router, Request, Response } from 'express';
+
+// const router = Router();
+
+// router.get('/:id', (req: Request, res: Response) => {
+//     res.json({
+//         msg: 'Get all'
+//     })
+// })
+
+// router.post("/",(req: Request, res: Response) => {
+//     res.json({
+//         msg: "Post all"
+//     })
+// })
+
+// router.put("/:id",(req: Request, res: Response) => {
+//     res.json({
+//         msg: "Modify product"
+//     })
+// })
+
+// router.delete("/:id",(req: Request, res: Response) => {
+//     res.json({
+//         msg: "Delete product"
+//     })
+// });
+
+// export default router
+
+import { Router, Request, Response } from "express";
+import { getAllProducts, createProduct } from '../controller/products';
 
 const router = Router();
 
-router.get('/:id', (req: Request, res: Response) => {
-    res.json({
-        msg: 'Get all'
-    })
+router.get('/', async (req: Request, res: Response) => {
+	const data = await getAllProducts();
+	res.json({
+		msg: "Get all",
+		data
+	})
 })
 
-router.post("./",(req: Request, res: Response) => {
-    res.json({
-        msg: "Post all"
-    })
+router.post('/', async (req: Request, res: Response) => {
+	const {name, stock, price} = req.body;
+	
+	const newProduct = await createProduct(name, stock, price);
+	res.json({
+		msg: "Post all",
+		newProduct
+	})
 })
 
-router.put("./:id",(req: Request, res: Response) => {
-    res.json({
-        msg: "Modify product"
-    })
+router.put('/:id', (req: Request, res: Response) => {
+	res.json({
+		msg: "Modify a product"
+	})
 })
 
-router.delete("./:id",(req: Request, res: Response) => {
-    res.json({
-        msg: "Delete product"
-    })
-});
+router.delete('/:id', (req: Request, res: Response) => {
+	res.json({
+		msg: "Delete product"
+	})
+})
 
-export default router
+export default router;

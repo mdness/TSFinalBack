@@ -1,5 +1,11 @@
-import server from "./services/server";
+import { initDb } from './services/database';
+import server from './services/server';
 
-const puerto = 8080;
+const init = async () => {
+	await initDb();
+	const port = 8080;
 
-server.listen(puerto, () => console.log("Todo bien"));
+	server.listen(port, ()=> console.log("Todo bien"))
+}
+
+init();

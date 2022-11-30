@@ -1,4 +1,4 @@
-import express from 'express'; 
+import express from 'express';
 import mainRouter from '../routes';
 import http from 'http';
 
