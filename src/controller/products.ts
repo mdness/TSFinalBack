@@ -1,17 +1,50 @@
-import { ProductsModel } from "../services/database";
+import { productsModel } from "../models/products";
+import { productsGlo } from "../globales";
 
+class Products {
+  constructor() {}
 
-export const getAllProducts = async () => {
-    const products = await ProductsModel.get();
-
-    return products;
+  async getById(id: string) {
+    try {
+      return await productsModel.findById(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async saveProduct(data: productsGlo) {
+    try {
+      const newProduct: productsGlo = {
+        name: data.name,
+        price: data.price,
+        stock: data.stock,
+      };
+      await productsModel.create(newProduct);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async deleteProduct(id: string) {
+    try {
+      await productsModel.findByIdAndDelete(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async upProduct(id: string, data: productsGlo) {
+    const { name, price, stock } = data;
+    try {
+      await productsModel.findByIdAndUpdate(
+        id,
+        { name, price, stock },
+        { new: true }
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
-export const createProduct = async (name: string, stock: number, price: number) => {
-    const newProduct = await ProductsModel.create({
-        name, stock, price
-    })
+const newProduct = new Products();
 
-    return newProduct;
+export default newProduct;
 
-}
